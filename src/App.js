@@ -2,9 +2,8 @@ import React from 'react';
 import AddItem from "./AddItem";
 import Buttons from "./Buttons";
 import IncompItemsCount from "./IncompItemsCount";
-import IncompBox from "./IncompBox";
 import CompItemsCount from "./CompItemsCount";
-import CompBox from "./CompBox";
+import TaskBox from "./TaskBox";
 import './App.css';
 
 class App extends React.Component {
@@ -15,19 +14,19 @@ class App extends React.Component {
         <AddItem />
         <section className="container">
           <IncompItemsCount count={3} />
-          <Buttons />
+          <Buttons completed={false} />
           <div className="row">
-            <IncompBox text="Aldus PageMaker including versions of Lorem Ipsum." />
-            <IncompBox text="Aldus PageMaker including versions of Lorem Ipsum." />
-            <IncompBox text="Aldus PageMaker including versions of Lorem Ipsum." />
+          <TaskBox completed={false} text="Aldus PageMaker including versions of Lorem Ipsum." />
+          <TaskBox completed={false} text="Aldus PageMaker including versions of Lorem Ipsum." />
+          <TaskBox completed={false} text="Aldus PageMaker including versions of Lorem Ipsum." />
           </div>
         </section>
         <section className="container">
           <CompItemsCount count={2} />
-          <Buttons />
+          <Buttons completed />
           <div className="row">
-            <CompBox text="Aldus PageMaker including versions of Lorem Ipsum." />
-            <CompBox text="Aldus PageMaker including versions of Lorem Ipsum." />
+            <TaskBox completed text="Aldus PageMaker including versions of Lorem Ipsum." />
+            <TaskBox completed text="Aldus PageMaker including versions of Lorem Ipsum." />
           </div>
         </section>
       </section>

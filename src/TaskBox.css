@@ -1,0 +1,11 @@
+.box{
+    margin: 3px;
+}
+
+.completed-box{
+    background-color: #d1ccbc;
+}
+
+.incompleted-box{
+    background-color: white;
+}
