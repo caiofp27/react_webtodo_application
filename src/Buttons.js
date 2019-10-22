@@ -5,9 +5,9 @@ class Buttons extends React.Component {
   render() {
     return (
       <div>
-        <a href="a" className="list-icon far fa-dot-circle"> Select All</a>
-        <a href="a" className="list-icon far fa-trash-alt trash-icon"> Delete</a>
-        {this.props.completed === false && <a href="a" className="list-icon fas fa-check trash-icon"> Complete </a>}
+        <i className="list-icon far fa-dot-circle"> Select All</i>
+        <i className="list-icon far fa-trash-alt trash-icon"> Delete</i>
+        {this.props.completed === false && <i className="list-icon fas fa-check trash-icon"> Complete </i>}
       </div>
     );
   }
