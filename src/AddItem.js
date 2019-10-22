@@ -1,12 +1,39 @@
 import React from "react";
 
 class AddItem extends React.Component {
+  state = {
+    newTaskText: ""
+  }
+  updateTaskText = (event) => {
+    this.setState({
+      newTaskText: event.target.value
+    });
+  }
+  handleClick = () => {
+    if(this.state.newTaskText === ""){
+      alert("Please add a task first");
+    }else{
+      this.props.addTaskFunc(this.state.newTaskText);
+      this.setState({
+       newTaskText: "" 
+      });
+    }
+  }
   render() {
     return (
       <section className="container">
         <form className="form-inline justify-content-center">
-          <input type="text" className="col-6 form-control mr-2" placeholder="New task" />
-          <button type="submit" className="btn btn-sm btn-primary">ADD</button>
+          <input 
+            type="text" 
+            className="col-6 form-control mr-2" 
+            placeholder="New task"
+            value={this.state.newTaskText}
+            onChange={this.updateTaskText}
+            maxLength="40"
+          />
+          <button className="btn btn-sm btn-primary" onClick={this.handleClick}>
+            ADD
+          </button>
         </form>
       </section>
     );
