@@ -32,6 +32,8 @@ class App extends React.Component {
     });
   }
   render() {
+    const completedTasks = this.state.tasks.filter(t => t.completed === true);
+    const incompletedTasks = this.state.tasks.filter(t => t.completed === false);
     return (
       <section>
         <h3 className="title">My ToDo List</h3>
@@ -40,18 +42,16 @@ class App extends React.Component {
           <ItemsCount completed={false} count={3} />
           <Buttons completed={false} />
           <div className="row">
-            {this.state.tasks.map(item => {
-              return item.completed === false ? <TaskBox key={item.id} text={item.text} date={item.date} completed={item.completed} /> : "";
-            })}
+            {incompletedTasks.map(item => {
+            return <TaskBox key={item.id} text={item.text} date={item.date} completed={item.completed} />})}
           </div>
         </section>
         <section className="container">
           <ItemsCount completed count={2} />
           <Buttons completed />
           <div className="row">
-            {this.state.tasks.map(item => {
-              return item.completed ? <TaskBox key={item.id} text={item.text} date={item.date} completed={item.completed} /> : "";
-            })}
+            {completedTasks.map(item => {
+            return <TaskBox key={item.id} text={item.text} date={item.date} completed={item.completed} />})}
           </div>
         </section>
       </section>
