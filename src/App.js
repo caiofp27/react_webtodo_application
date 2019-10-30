@@ -4,6 +4,7 @@ import AddItem from "./AddItem";
 import Buttons from "./Buttons";
 import ItemsCount from "./ItemsCount";
 import TaskBox from "./TaskBox";
+import Moment from "moment";
 import './App.css';
 
 class App extends React.Component {
@@ -17,12 +18,12 @@ class App extends React.Component {
     ]
   }
   addTask = (taskText) => {
-    let now = new Date();
-    let today = now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate();
+    // let now = new Date();
+    // let today = now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate();
     const newTask = {
       text: taskText,
       completed: false,
-      date: today,
+      date: Moment().format('YYYY-MM-DD'),
       id: uuid()
     };
     const tasksCopy = this.state.tasks.slice();
