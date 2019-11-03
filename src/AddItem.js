@@ -30,7 +30,7 @@ class AddItem extends React.Component {
             placeholder="New task"
             value={this.state.newTaskText}
             onChange={this.updateTaskText}
-            maxLength="40"
+            maxLength="70"
           />
           <button className="btn btn-sm btn-primary" onClick={this.handleClick}>
             ADD

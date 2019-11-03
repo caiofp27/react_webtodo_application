@@ -1,7 +1,7 @@
 .title{
     text-align: center;
     margin: 30px;
-    background-color: #ffe385
+    font-style: italic;
 }
 
 @media only screen and (max-width: 720px){

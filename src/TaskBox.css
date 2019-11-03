@@ -1,11 +1,36 @@
+.card-text{
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
 .box{
     margin: 3px;
 }
 
 .completed-box{
-    background-color: #d1ccbc;
+    background-color: #afe86d;
 }
 
 .incompleted-box{
     background-color: white;
 }
+
+.trash-icon{
+    margin: 4px;
+    color: red;
+    position: absolute;
+    right: 15px;
+    bottom: 20px;
+}
+ .check-icon{
+    color: blue;
+    position: absolute;
+    left: 15px;
+    bottom: 20px;
+ }
+
+ .undo-icon{
+    color: green;
+    position: absolute;
+    left: 15px;
+    bottom: 20px;
+ }
