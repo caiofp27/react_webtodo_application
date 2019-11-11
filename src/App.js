@@ -3,24 +3,22 @@ import uuid from "uuid/v4";
 import AddItem from "./AddItem";
 import ItemsCount from "./ItemsCount";
 import TaskBox from "./TaskBox";
-import Moment from "moment";
 import './App.css';
 
 class App extends React.Component {
   state = {
     tasks: [
-      { text: "Aldus PageMaker including versions of Lorem Ipsum.", completed: false, date: "2019-10-16", id: uuid() },
-      { text: "Aldus PageMaker including versions of Lorem Ipsum.", completed: false, date: "2019-10-17", id: uuid() },
-      { text: "Aldus PageMaker including versions of Lorem Ipsum.", completed: false, date: "2019-10-15", id: uuid() },
-      { text: "Aldus PageMaker including versions of Lorem Ipsum.", completed: true, date: "2019-10-20", id: uuid() },
-      { text: "Aldus PageMaker including versions of Lorem Ipsum.", completed: true, date: "2019-11-06", id: uuid() }
+      { text: "Aldus PageMaker including versions of Lorem Ipsum.", completed: false, id: uuid() },
+      { text: "Aldus PageMaker including versions of Lorem Ipsum.", completed: false, id: uuid() },
+      { text: "Aldus PageMaker including versions of Lorem Ipsum.", completed: false, id: uuid() },
+      { text: "Aldus PageMaker including versions of Lorem Ipsum.", completed: true, id: uuid() },
+      { text: "Aldus PageMaker including versions of Lorem Ipsum.", completed: true, id: uuid() }
     ]
   }
   addTask = (taskText) => {
     const newTask = {
       text: taskText,
       completed: false,
-      date: Moment().format('YYYY-MM-DD'),
       id: uuid()
     };
     const tasksCopy = this.state.tasks.slice();
@@ -72,14 +70,14 @@ class App extends React.Component {
           <ItemsCount completed={false} count={countIncompleted} />
           <div className="row">
             {incompleteTasks.map(item => {
-            return <TaskBox key={item.id} text={item.text} date={item.date} completed={item.completed} deleteTaskFunc={this.deleteTask} checkTaskFunc={this.checkTask} undoTaskFunc={this.undoTask} id={item.id} />})}
+            return <TaskBox key={item.id} text={item.text} completed={item.completed} deleteTaskFunc={this.deleteTask} checkTaskFunc={this.checkTask} undoTaskFunc={this.undoTask} id={item.id} />})}
           </div>
         </section>
         <section className="container">
           <ItemsCount completed count={countCompleted} /> 
           <div className="row">
             {completedTasks.map(item => {
-            return <TaskBox key={item.id} text={item.text} date={item.date} completed={item.completed} deleteTaskFunc={this.deleteTask} checkTaskFunc={this.checkTask} undoTaskFunc={this.undoTask} id={item.id} />})}
+            return <TaskBox key={item.id} text={item.text} completed={item.completed} deleteTaskFunc={this.deleteTask} checkTaskFunc={this.checkTask} undoTaskFunc={this.undoTask} id={item.id} />})}
           </div>
         </section>
       </section>
