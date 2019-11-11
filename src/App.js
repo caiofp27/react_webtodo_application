@@ -76,7 +76,7 @@ class App extends React.Component {
           </div>
         </section>
         <section className="container">
-          <ItemsCount completed count={countCompleted} />
+          <ItemsCount completed count={countCompleted} /> 
           <div className="row">
             {completedTasks.map(item => {
             return <TaskBox key={item.id} text={item.text} date={item.date} completed={item.completed} deleteTaskFunc={this.deleteTask} checkTaskFunc={this.checkTask} undoTaskFunc={this.undoTask} id={item.id} />})}
