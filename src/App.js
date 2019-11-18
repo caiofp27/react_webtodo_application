@@ -70,14 +70,16 @@ class App extends React.Component {
           <ItemsCount completed={false} count={countIncompleted} />
           <div className="row">
             {incompleteTasks.map(item => {
-            return <TaskBox key={item.id} text={item.text} completed={item.completed} deleteTaskFunc={this.deleteTask} checkTaskFunc={this.checkTask} undoTaskFunc={this.undoTask} id={item.id} />})}
+              return <TaskBox key={item.id} text={item.text} completed={item.completed} deleteTaskFunc={this.deleteTask} checkTaskFunc={this.checkTask} undoTaskFunc={this.undoTask} id={item.id} 
+            />})}
           </div>
         </section>
         <section className="container">
           <ItemsCount completed count={countCompleted} /> 
           <div className="row">
             {completedTasks.map(item => {
-            return <TaskBox key={item.id} text={item.text} completed={item.completed} deleteTaskFunc={this.deleteTask} checkTaskFunc={this.checkTask} undoTaskFunc={this.undoTask} id={item.id} />})}
+              return <TaskBox key={item.id} text={item.text} completed={item.completed} deleteTaskFunc={this.deleteTask} checkTaskFunc={this.checkTask} undoTaskFunc={this.undoTask} id={item.id} 
+            />})}
           </div>
         </section>
       </section>

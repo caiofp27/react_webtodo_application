@@ -16,7 +16,7 @@ class AddItem extends React.Component {
     }else{
       this.props.addTaskFunc(this.state.newTaskText);
       this.setState({
-       newTaskText: "" 
+        newTaskText: "" 
       });
     }
   }

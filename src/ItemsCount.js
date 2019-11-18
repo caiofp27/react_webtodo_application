@@ -1,10 +1,9 @@
 import React from "react";
-import "./ItemsCount.css";
+import "./TaskBox.css";
 
 class ItemsCount extends React.Component {
   completedTask = 0;
   incompletedTask = 0;
-
   render() {
     return (
       <div>
