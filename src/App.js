@@ -1,65 +1,104 @@
 import React from 'react';
-import uuid from "uuid/v4";
 import AddItem from "./AddItem";
 import ItemsCount from "./ItemsCount";
 import TaskBox from "./TaskBox";
+import axios from "axios";
 import './App.css';
 
 class App extends React.Component {
   state = {
-    tasks: [
-      { text: "Aldus PageMaker including versions of Lorem Ipsum.", completed: false, id: uuid() },
-      { text: "Aldus PageMaker including versions of Lorem Ipsum.", completed: false, id: uuid() },
-      { text: "Aldus PageMaker including versions of Lorem Ipsum.", completed: false, id: uuid() },
-      { text: "Aldus PageMaker including versions of Lorem Ipsum.", completed: true, id: uuid() },
-      { text: "Aldus PageMaker including versions of Lorem Ipsum.", completed: true, id: uuid() }
-    ]
+    tasks: []
   }
-  addTask = (taskText) => {
+  componentDidMount(){
+    axios.get('https://7il2iqr3w7.execute-api.eu-west-2.amazonaws.com/dev/tasks')
+    .then((response) => {
+      this.setState({
+        tasks: response.data
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
+  addTask = (text) => {
     const newTask = {
-      text: taskText,
-      completed: false,
-      id: uuid()
+      taskText: text,
+      completed: false
     };
-    const tasksCopy = this.state.tasks.slice();
-    tasksCopy.push(newTask);
-    this.setState({
-      tasks: tasksCopy
+    axios.post('https://7il2iqr3w7.execute-api.eu-west-2.amazonaws.com/dev/tasks', newTask)
+    .then((response) => {
+      newTask.taskId = response.data.insertId;
+      const tasksCopy = this.state.tasks.slice();
+      tasksCopy.push(newTask);
+      this.setState({
+        tasks: tasksCopy
+      });
+    })
+    .catch((error) => {
+      console.log(error);
     });
   }
   deleteTask = id => {
-    const filterTask = this.state.tasks.filter(task => {
-      return task.id !== id;
-    });
-    this.setState({
-      tasks: filterTask
+    const url = "https://7il2iqr3w7.execute-api.eu-west-2.amazonaws.com/dev/tasks";
+    axios.delete(`${url}/${id}`)
+    .then((response) => {
+      console.log(response);
+      const filterTask = this.state.tasks.filter(task => {
+        return task.taskId !== id;
+      });
+      this.setState({
+        tasks: filterTask
+      });
+    })
+    .catch((error) => {
+      console.log(error);
     });
   }
   checkTask = id => {
-    const checkTask = this.state.tasks.map(task => {
-      if(task.id === id){
+    const checkTasks = this.state.tasks;
+    let selectedTask = {};
+    checkTasks.forEach(task => {
+      if(task.taskId === id){
         task.completed = true;
+        selectedTask = task;
       }
-      return task;
     });
-    this.setState({
-      tasks: checkTask
+    const url = "https://7il2iqr3w7.execute-api.eu-west-2.amazonaws.com/dev/tasks";
+    axios.put(`${url}/${id}`, selectedTask)
+    .then((response) => {
+      console.log(response);
+      this.setState({
+        tasks: checkTasks 
+      });
+    })
+    .catch((error) => {
+      console.log(error);
     });
   }
   undoTask = id => {
-    const undoTask = this.state.tasks.map(task => {
-      if(task.id === id){
+    const undoTasks = this.state.tasks;
+    let selectedTask = {};
+    undoTasks.forEach(task => {
+      if(task.taskId === id){
         task.completed = false;
+        selectedTask = task;
       }
-      return task;
     });
-    this.setState({
-      tasks: undoTask
+    const url = "https://7il2iqr3w7.execute-api.eu-west-2.amazonaws.com/dev/tasks";
+    axios.put(`${url}/${id}`, selectedTask)
+    .then((response) => {
+      console.log(response)
+      this.setState({
+        tasks: undoTasks
+      });
+    })
+    .catch((error) => {
+      console.log(error);
     });
   }
   render() {
-    const completedTasks = this.state.tasks.filter(t => t.completed === true);
-    const incompleteTasks = this.state.tasks.filter(t => t.completed === false);
+    const completedTasks = this.state.tasks.filter(task => task.completed);
+    const incompleteTasks = this.state.tasks.filter(task => !task.completed);
     const countCompleted = completedTasks.length;
     const countIncompleted = incompleteTasks.length;
     return (
@@ -69,16 +108,24 @@ class App extends React.Component {
         <section className="container">
           <ItemsCount completed={false} count={countIncompleted} />
           <div className="row">
-            {incompleteTasks.map(item => {
-              return <TaskBox key={item.id} text={item.text} completed={item.completed} deleteTaskFunc={this.deleteTask} checkTaskFunc={this.checkTask} undoTaskFunc={this.undoTask} id={item.id} 
-            />})}
+            {incompleteTasks.map(itemIn => {
+              return <TaskBox
+                key={itemIn.taskId} 
+                text={itemIn.taskText}  
+                completed={itemIn.completed} 
+                deleteTaskFunc={this.deleteTask} 
+                checkTaskFunc={this.checkTask} 
+                undoTaskFunc={this.undoTask} 
+                id={itemIn.taskId}
+              />
+            })}
           </div>
         </section>
         <section className="container">
           <ItemsCount completed count={countCompleted} /> 
           <div className="row">
-            {completedTasks.map(item => {
-              return <TaskBox key={item.id} text={item.text} completed={item.completed} deleteTaskFunc={this.deleteTask} checkTaskFunc={this.checkTask} undoTaskFunc={this.undoTask} id={item.id} 
+            {completedTasks.map(itemCo => {
+              return <TaskBox key={itemCo.taskId} text={itemCo.taskText} completed={itemCo.completed} deleteTaskFunc={this.deleteTask} checkTaskFunc={this.checkTask} undoTaskFunc={this.undoTask} id={itemCo.taskId}
             />})}
           </div>
         </section>
