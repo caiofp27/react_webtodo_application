@@ -17,8 +17,6 @@ This project uses the following technology:
 
 It has been designed and built with mobile-first reponsive principles in mind.
 
-(Maybe add photos here of different device sizes?)
-
 ### Running the application locally
 
 [Node.js](https://nodejs.org/en/) must be installed if not already.
