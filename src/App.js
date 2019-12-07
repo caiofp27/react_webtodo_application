@@ -42,7 +42,6 @@ class App extends React.Component {
     const url = "https://7il2iqr3w7.execute-api.eu-west-2.amazonaws.com/dev/tasks";
     axios.delete(`${url}/${id}`)
     .then((response) => {
-      console.log(response);
       const filterTask = this.state.tasks.filter(task => {
         return task.taskId !== id;
       });
@@ -66,7 +65,6 @@ class App extends React.Component {
     const url = "https://7il2iqr3w7.execute-api.eu-west-2.amazonaws.com/dev/tasks";
     axios.put(`${url}/${id}`, selectedTask)
     .then((response) => {
-      console.log(response);
       this.setState({
         tasks: checkTasks 
       });
@@ -87,7 +85,6 @@ class App extends React.Component {
     const url = "https://7il2iqr3w7.execute-api.eu-west-2.amazonaws.com/dev/tasks";
     axios.put(`${url}/${id}`, selectedTask)
     .then((response) => {
-      console.log(response)
       this.setState({
         tasks: undoTasks
       });
