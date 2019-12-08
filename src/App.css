@@ -1,11 +1,52 @@
+.header-background{
+  background: url('./images/title.jpg') no-repeat;
+  background-position: 0px -40px;
+  background-size: cover;
+  border: none;
+  border-radius: 40px 10px;
+}
+
 .title{
+  padding-top: 100px;
+  padding-bottom: 70px;
   text-align: center;
   margin: 30px;
   font-style: italic;
 }
 
+.title-new{
+  text-align: center;
+  font-style: italic;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: 0.5px solid gray;
+}
+
+.btn-add{
+  margin-top: 5px;
+  background-color: #1e2a40;
+  border: none;
+}
+
+@media only screen and (max-width: 992px){
+  .header-background{
+    background-position: 0 0;
+  }
+  .title{
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+}
+
+@media only screen and (max-width: 770px){
+  .title{
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+
 @media only screen and (max-width: 720px){
-  h3{
+  h2{
     font-size: 18px;
   }
   h4{
@@ -16,5 +57,11 @@
   }
   a{
     font-size: 11px;
+  }
+  #title-container{
+    text-align: center;
+  }
+  .box{
+    margin: 15px;
   }
 }

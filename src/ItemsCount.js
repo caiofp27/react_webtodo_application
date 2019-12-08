@@ -7,7 +7,7 @@ class ItemsCount extends React.Component {
   render() {
     return (
       <div>
-        {this.props.completed ? <h4 id="title-container"><i>You have completed {this.props.count} task</i></h4> : <h4 id="title-container"><i>You have {this.props.count} incomplete task</i></h4>}
+        {this.props.completed ? <h4 className="title-container completed"><i>Completed tasks: {this.props.count}</i></h4> : <h4 className="title-container"><i>Incomplete task: {this.props.count}</i></h4>}
       </div>
     );
   }

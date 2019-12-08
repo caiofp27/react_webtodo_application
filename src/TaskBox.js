@@ -13,9 +13,9 @@ class TaskBox extends React.Component {
   }
   render() {
     return (
-      <div className={`col-md-3 card box ${this.props.completed ? "completed-box" : "incompleted-box"}`}>
+      <div className={`col-md-6 card box ${this.props.completed ? "completed-box" : "incompleted-box"}`}>
         <div className="card-text">
-          <p>{this.props.text}</p>
+          <p className="text-align">{this.props.text}</p>
           {this.props.completed ? <i className="fas fa-undo undo-icon" onClick={this.handleUndo} /> : <i className="check-icon fas fa-check" onClick={this.handleCheck} />}
           <i className="fas fa-trash-alt trash-icon" onClick={this.handleDelete} />
         </div>

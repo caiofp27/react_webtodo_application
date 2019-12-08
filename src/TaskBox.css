@@ -1,12 +1,12 @@
 .card-text{
-  padding-top: 20px;
-  padding-bottom: 30px;
+  padding-top: 15px;
+  padding-bottom: 20px;
 }
 .box{
-  margin: 3px;
+  margin-top: 2px;
 }
 .completed-box{
-  background-color: #afe86d;
+  background-color: #5a657f62;
 }
 
 .incompleted-box{
@@ -14,7 +14,7 @@
 }
 
 .trash-icon{
-  margin: 4px;
+  margin-top: 4px;
   color: red;
   position: absolute;
   right: 15px;
@@ -29,14 +29,23 @@
  }
 
 .undo-icon{
-  color: green;
+  color: gray;
   position: absolute;
   left: 15px;
   bottom: 20px;
 }
 
-#title-container{
+.text-align{
   text-align: center;
-  margin-top: 40px;
+}
+
+.title-container{
+  text-align: center;
+  margin-top: 20px;
   margin-bottom: 20px;
+  border-bottom: 0.5px solid gray;
+}
+
+.completed{
+  margin-top: 40px;
 }

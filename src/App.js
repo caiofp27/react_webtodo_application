@@ -99,31 +99,27 @@ class App extends React.Component {
     const countCompleted = completedTasks.length;
     const countIncompleted = incompleteTasks.length;
     return (
-      <section>
-        <h3 className="title">My ToDo List</h3>
-        <AddItem addTaskFunc={this.addTask} />
-        <section className="container">
-          <ItemsCount completed={false} count={countIncompleted} />
-          <div className="row">
-            {incompleteTasks.map(itemIn => {
-              return <TaskBox
-                key={itemIn.taskId} 
-                text={itemIn.taskText}  
-                completed={itemIn.completed} 
-                deleteTaskFunc={this.deleteTask} 
-                checkTaskFunc={this.checkTask} 
-                undoTaskFunc={this.undoTask} 
-                id={itemIn.taskId}
-              />
-            })}
+      <section className="container">
+        <div className="header-background title" />
+        <section className="row">
+          <div className="col-md-4">
+            <h4 className="title-new">New Task Here!</h4>
+            <AddItem addTaskFunc={this.addTask} />
           </div>
-        </section>
-        <section className="container">
-          <ItemsCount completed count={countCompleted} /> 
-          <div className="row">
-            {completedTasks.map(itemCo => {
-              return <TaskBox key={itemCo.taskId} text={itemCo.taskText} completed={itemCo.completed} deleteTaskFunc={this.deleteTask} checkTaskFunc={this.checkTask} undoTaskFunc={this.undoTask} id={itemCo.taskId}
-            />})}
+          <div className="col-md-8">
+            <ItemsCount completed={false} count={countIncompleted} />
+            <div className="row">
+              {incompleteTasks.map(itemIn => { 
+                return <TaskBox key={itemIn.taskId} text={itemIn.taskText} completed={itemIn.completed} deleteTaskFunc={this.deleteTask} checkTaskFunc={this.checkTask} undoTaskFunc={this.undoTask} id={itemIn.taskId}
+              />
+              })}
+            </div>
+            <ItemsCount completed count={countCompleted} /> 
+            <div className="row">
+              {completedTasks.map(itemCo => {
+                return <TaskBox key={itemCo.taskId} text={itemCo.taskText} completed={itemCo.completed} deleteTaskFunc={this.deleteTask} checkTaskFunc={this.checkTask} undoTaskFunc={this.undoTask} id={itemCo.taskId}
+              />})}
+            </div>
           </div>
         </section>
       </section>
