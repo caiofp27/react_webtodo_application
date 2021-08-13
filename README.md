@@ -2,8 +2,6 @@
 
 This is the front end of a Todo Application, built throughout the [Tech Returners](https://techreturners.com) Your Journey Into Tech course. It integrates with a backend, available [here](https://github.com/caiofp27/webtodo_application_backend).
 
-The hosted version of the application is available here: [https://caiofp27.github.io/react_webtodo_application/](https://caiofp27.github.io/react_webtodo_application/).
-
 ### Technology Used
 
 This project uses the following technology:
